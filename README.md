@@ -76,7 +76,7 @@ gunzip ./SelectedTCRs.xls.gz
 * Obtain status from 
 * Finally, using the following commands to produce the TCR coordinate for subsequent steps.
 ```
-python calc_tcr_coord.py --tcr_dist_path xxx --filter_tcr_path xxx --selected_tcr_path xxx --status_path xxx --save_path output_path
+python calc_tcr_coord.py --tcr_dist_path path/SelectedTCR.tcrdist.tab --filter_tcr_path xxx --selected_tcr_path path/SelectedTCRs.xls --status_path xxx --save_path output_path
 ```
 ### Visualization
 A user can interact with the TCR Map tool via two control modules, i.e., the Sample Selector and the Color Legend. 
