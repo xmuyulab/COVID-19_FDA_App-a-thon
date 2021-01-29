@@ -77,15 +77,15 @@ $pubtcrs/bin/tcrdists -i SelectedTCR.csv -d $pubtcrs//db |sed "s/\ /\t/g"|cut -f
 To obtain the two-dimensional coordinates of TCR,follow the following steps:
 
 * Obtain TCR distance matrix from SelectedTCR.tcrdist.tab
-* Obtain TCR sequence and vdj message from 
-* Obtain sample message from ./SelectedTCRs.xls
+* Obtain TCR sequence and vdj message from SelectedTCRs.csv  
+* Obtain sample message from SelectedTCRs.xls
 ```
 gunzip ./SelectedTCRs.xls.gz
 ```
-* Obtain status from 
+* Obtain status from COVID.Status.txt
 * Finally, using the following commands to produce the TCR coordinate for subsequent steps.
 ```
-python calc_tcr_coord.py --tcr_dist_path path/SelectedTCR.tcrdist.tab --filter_tcr_path xxx --selected_tcr_path path/SelectedTCRs.xls --status_path xxx --save_path output_path
+python calc_tcr_coord.py --tcr_dist_path ./SelectedTCR.tcrdist.tab --filter_tcr_path ./SelectedTCRs.csv --selected_tcr_path ./SelectedTCRs.xls --status_path ./COVID.Status.txt --save_path output_path
 ```
 ### Visualization
 A user can interact with the TCR Map tool via two control modules, i.e., the Sample Selector and the Color Legend. 
