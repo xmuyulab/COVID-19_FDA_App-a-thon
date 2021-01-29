@@ -67,10 +67,13 @@ $pubtcrs/bin/tcrdists -i SelectedTCR.csv -d $pubtcrs//db |sed "s/\ /\t/g"|cut -f
 #### Obtain TCR coordinates
 To obtain the two-dimensional coordinates of TCR,follow the following steps:
 
-* Obtain TCR distance matrix from .
-* Obtain TCR sequence and vdj message from .
-* Obtain sample message from.
-* Obtain status from .
+* Obtain TCR distance matrix from SelectedTCR.tcrdist.tab
+* Obtain TCR sequence and vdj message from 
+* Obtain sample message from ./SelectedTCRs.xls
+```
+gunzip ./SelectedTCRs.xls.gz
+```
+* Obtain status from 
 * Finally, using the following commands to produce the TCR coordinate for subsequent steps.
 ```
 python calc_tcr_coord.py --tcr_dist_path xxx --filter_tcr_path xxx --selected_tcr_path xxx --status_path xxx --save_path output_path
