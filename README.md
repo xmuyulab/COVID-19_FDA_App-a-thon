@@ -64,8 +64,17 @@ cut -f 4 SelectedTCRs.xls|grep -v "V_CDR3"|sort|uniq >SelectedTCRs.csv # Ready f
 # export pubtcrs=/where/pubtcrs/tools/are # Path to pubtcrs
 $pubtcrs/bin/tcrdists -i SelectedTCR.csv -d $pubtcrs//db |sed "s/\ /\t/g"|cut -f 4-  SelectedTCR.tcrdist.tab # TCR distance, this file can be huge!!! And running this command may takes one day or even more time!
 ```
+#### Obtain TCR coordinates
+To obtain the two-dimensional coordinates of TCR,follow the following steps:
 
-
+* Obtain TCR distance matrix from .
+* Obtain TCR sequence and vdj message from .
+* Obtain sample message from.
+* Obtain status from .
+* Finally, using the following commands to produce the TCR coordinate for subsequent steps.
+```
+python calc_tcr_coord.py --tcr_dist_path xxx --filter_tcr_path xxx --selected_tcr_path xxx --status_path xxx --save_path output_path
+```
 ### Visualization
 A user can interact with the TCR Map tool via two control modules, i.e., the Sample Selector and the Color Legend. 
 
