@@ -6,7 +6,7 @@ Yuqing Chang (1), Shun Wang (1), Yacheng Liu (1), Hao Li (1), Wenxian Yang (2), 
 
 (2) Aginome Scientific, China
 
-! [Interface] (./sample.png)
+![Interface] (./sample.png)
 
 ## 1. Introduction
 
