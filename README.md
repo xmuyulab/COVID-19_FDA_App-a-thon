@@ -52,6 +52,8 @@ In our demo we choose the Gaussian Kernel assuming that the data points are i.i.
 
 ### How to prepare the data input? 
 
+
+
 ### Visualization
 A user can interact with the TCR Map tool via two control modules, i.e., the Sample Selector and the Color Legend. 
 
