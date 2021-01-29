@@ -56,11 +56,11 @@ To produce the TCR distance data, follow the following steps
 
 * Obtain TCR data.  For this demo, we downloaded the TCR data from https://doi.org/10.21417/ADPT2020COVID, 
 * Identified amplified TCR chains as in https://github.com/wangshun1121/pubtcrs. 
-* Put the selected TCRs with their corresponding samples recorded in `SelectedTCRs.xls`, and the selected samples with their phenotypes (age, gender and disease) in `Phenotypes.txt`.
+* Put the selected TCRs with their corresponding samples recorded in `SelectedTCRs.xls.gz`, and the selected samples with their phenotypes (age, gender and disease) in `Phenotypes.txt`.
 * Finally, use the following commands to produce the TCR distance data for subsequent steps. 
 
 ```
-cut -f 4 SelectedTCRs.xls|grep -v "V_CDR3"|sort|uniq >SelectedTCRs.csv # Ready for TCR similarity distance calculation
+gunzip -c SelectedTCRs.xls.gz | cut -f 4 | grep -v "V_CDR3" | sort | uniq >SelectedTCRs.csv # Ready for TCR similarity distance calculation
 # export pubtcrs=/where/pubtcrs/tools/are # Path to pubtcrs
 $pubtcrs/bin/tcrdists -i SelectedTCR.csv -d $pubtcrs//db |sed "s/\ /\t/g"|cut -f 4-  SelectedTCR.tcrdist.tab # TCR distance, this file can be huge!!! And running this command may takes one day or even more time!
 ```
