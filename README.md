@@ -52,6 +52,15 @@ In our demo we choose the Gaussian Kernel assuming that the data points are i.i.
 
 ### How to prepare the data input? 
 
+Download TCR data from https://doi.org/10.21417/ADPT2020COVID, and select TCR chains as instruction at https://github.com/wangshun1121/pubtcrs. Selected TCRs and samples where TCRs were from are recorded in `SelectedTCRs.xls`. Selected samples and their phenotypes (age, gender and disease) were listed in [Phenotypes.txt](Phenotypes.txt)
+
+Then using following commands, get information we need:
+
+```
+cut -f 4 SelectedTCRs.xls|grep -v "V_CDR3"|sort|uniq >SelectedTCRs.csv # Ready for TCR similarity distance calculation
+# export pubtcrs=/where/pubtcrs/tools/are # Path to pubtcrs
+$pubtcrs/bin/tcrdists -i SelectedTCR.csv -d $pubtcrs//db |sed "s/\ /\t/g"|cut -f 4-  SelectedTCR.tcrdist.tab # TCR distance, this file can be huge!!! And running this command may takes one day or even more time!
+```
 
 
 ### Visualization
