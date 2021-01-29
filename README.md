@@ -6,7 +6,7 @@ Yuqing Chang (1), Shun Wang (1), Yacheng Liu (1), Hao Li (1), Wenxian Yang (2), 
 
 (2) Aginome Scientific, China
 
-![Interface] (./sample.png)
+![Interface] (https://github.com/xmuyulab/COVID-19_FDA_App-a-thon/blob/main/sample.png)
 
 ## 1. Introduction
 
