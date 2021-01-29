@@ -56,7 +56,7 @@ Using docker, lauch this tool just by one line:
 docker run -d -p 8050:8050 wangshun1121/tcrmap:0.1
 ```
 
-then enter 
+then enter `127.0.0.1:8050` in your web brownser, the tool starts!
 
 ### Data prepration 
 #### TCR distance calculation 
