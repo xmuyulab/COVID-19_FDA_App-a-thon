@@ -50,6 +50,14 @@ In our demo we choose the Gaussian Kernel assuming that the data points are i.i.
 
 ### How to install the tool? 
 
+Using docker, lauch this tool just by one line:
+
+```
+docker run -d -p 8050:8050 wangshun1121/tcrmap:0.1
+```
+
+then enter 
+
 ### Data prepration 
 #### TCR distance calculation 
 To produce the TCR distance data, follow the following steps
@@ -60,6 +68,7 @@ To produce the TCR distance data, follow the following steps
 * Finally, use the following commands to produce the TCR distance data for subsequent steps. 
 
 ```
+cut 1,4 Phenotypes.txt > COVID.Status.txt 
 gunzip -c SelectedTCRs.xls.gz | cut -f 4 | grep -v "V_CDR3" | sort | uniq >SelectedTCRs.csv # Ready for TCR similarity distance calculation
 # export pubtcrs=/where/pubtcrs/tools/are # Path to pubtcrs
 $pubtcrs/bin/tcrdists -i SelectedTCR.csv -d $pubtcrs//db |sed "s/\ /\t/g"|cut -f 4-  SelectedTCR.tcrdist.tab # TCR distance, this file can be huge!!! And running this command may takes one day or even more time!
