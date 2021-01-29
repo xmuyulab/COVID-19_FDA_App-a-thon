@@ -50,13 +50,14 @@ In our demo we choose the Gaussian Kernel assuming that the data points are i.i.
 
 ### How to install the tool? 
 
-### How to prepare the data input? 
+### Data prepration 
+#### TCR distance calculation 
 To produce the TCR distance data, follow the following steps
 
 * Obtain TCR data.  For this demo, we downloaded the TCR data from https://doi.org/10.21417/ADPT2020COVID, 
 * Select TCR chains as instruction at https://github.com/wangshun1121/pubtcrs. 
 * Put the selected TCRs with their corresponding samples recorded in `SelectedTCRs.xls`, and the selected samples with their phenotypes (age, gender and disease) in [Phenotypes.txt](Phenotypes.txt)
-* Finally, using the following commands to produce the TCR distance data. 
+* Finally, using the following commands to produce the TCR distance data for subsequent steps. 
 
 ```
 cut -f 4 SelectedTCRs.xls|grep -v "V_CDR3"|sort|uniq >SelectedTCRs.csv # Ready for TCR similarity distance calculation
