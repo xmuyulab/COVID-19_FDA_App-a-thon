@@ -46,11 +46,11 @@ def MDS(data, n=2):
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 @click.command(context_settings=CONTEXT_SETTINGS)
-@click.option('--tcr_dist_path',  required=True, type=click.Path(exists=True))
-@click.option('--filter_tcr_path', required=True, type=click.Path(exists=True))
-@click.option('--selected_tcrs_path', required=True, type=click.Path(exists=True))
-@click.option('--status_path', required=True, type=click.Path(exists=True))
-@click.option('--save_path', required=True, type=click.Path(exists=True))
+@click.option('--tcr_dist_path',  required=True, type=click.Path(exists=True), help='TCR distance matrix')
+@click.option('--filter_tcr_path', required=True, type=click.Path(exists=True), help='TCR sequence and vdj')
+@click.option('--selected_tcrs_path', required=True, type=click.Path(exists=True), help='Sample massage')
+@click.option('--status_path', required=True, type=click.Path(exists=True), help='Sample and Label message')
+@click.option('--save_path', required=True, type=click.Path(exists=True), help='Save path')
 
 def calc_tcr_coord(tcr_dist_path, filter_tcr_path, selected_tcrs_path, status_path, save_path):
     """
