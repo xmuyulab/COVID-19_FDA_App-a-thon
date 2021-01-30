@@ -324,8 +324,8 @@ def tcrmap(input_path, port):
 
     def normalize(Z):
         Znor=(Z-min(Z))/(max(Z)-min(Z))
-        #sum_all = sum(Znor)
-        #Znor = Znor / sum_all
+        sum_all = sum(Znor)
+        Znor = Znor / sum_all
         return Znor
 
     def get_scatter_data(df,kernel):
