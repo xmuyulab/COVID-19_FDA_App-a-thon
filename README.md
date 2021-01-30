@@ -20,19 +20,19 @@ The TCR Map tool can be utilzed in several different ways to help biological stu
 
 ### Data
 
-TCR-beta sequences datasets of COVID-19 patients were downloaded from ImmuneCODE-COVID [reference or url], which consists of 1486 samples from of 7 cohorts in total. Within these samples, 928 COVID-positive samples were selected in our demo. We also used a CMV TCR-beta sequencing dataset (340 CMV+ and 419 normal/healthy samples) for control [4]. In our demo, there are 1687 samples in total. 
+TCR-beta sequences datasets of COVID-19 patients were downloaded from ImmuneCODE-COVID available from [precisionFDA's COVID-19 Precision Immunology App-a-thon](https://precision.fda.gov/challenges/12) , which consists of 1486 samples from of 7 cohorts in total. Within these samples, 928 COVID-positive samples were selected in our demo. We also used a CMV TCR-beta sequencing dataset (340 CMV+ and 419 normal/healthy samples) for control [4]. In our demo, there are 1687 samples in total. 
 
 ### Identifying amplified TCR chains
 In our project, TCR chains were defined by a V-gene family plus a CDR3 amino acid sequence. 
 
 To reduce the amount of TCRs in our processing pipeline, we only keep only potentially amplified TCRs of each samples in our analysis, which was done as follows: 
 
-1. Calculate the TCR generation probability [2] (Pgen) using pgen (https://github.com/phbradley/pubtcrs). This value is taken as the TCR generation probability within healthy people. 
+1. Calculate the TCR generation probability [2] using [pgen](https://github.com/phbradley/pubtcrs). This value is taken as the TCR generation probability within healthy people. 
 
 2. Since low generation probability of TCRs, p-values indicating clonality expeditions can be calculated using Poisson model. Among one sample, the expectation clonality of a particular TCR can be assumed using TOTAL_TCR_CLONALITY * PGen, which was the lambda parameter of Poisson model; then the probability of observed or more clonality of this TCR can be calculated using R function ppois. TCRs with p-values less than 1e-30 were considered as amplified TCRs. Amplified TCRs were sorted by clonality number in decreasing order, and amplified TCRs ranked within top 1/5000 of total clonal types of each sample were reserved for further analysis. In total 66648 TCRs were selected from all samples.
 
 ### TCR similarity calculation
-Similarity levels of each pairs of selected TCR chains were calculated using TCRdist method [3] (downloaded from https://github.com/phbradley/pubtcrs) to generate a distance matrix D of the TCR chains.
+Similarity levels of each pairs of selected TCR chains were calculated using TCRdist method [3] (downloaded from [github](https://github.com/phbradley/pubtcrs) to generate a distance matrix D of the TCR chains.
 
 
 ### TCR dimension scaling and visualization
@@ -40,11 +40,11 @@ Similarity levels of each pairs of selected TCR chains were calculated using TCR
 <!-- TCR经过过滤后，得到TCR之间的距离矩阵D，为了可视化TCR的分布。我们利用MDS(Multidimensional Scaling) 算法，得到TCR在二维平面的坐标。
 MDS，是一种有效的降维方法，MDS使高维空间中每对样本之间的距离与构建的低维空间中的样本相似性尽可能一致。 -->
 
-For mapping the TCR chains into a low dimension embedded space (in our case two domension for visualziation), we applied the multidimensional scaling (MDS) algorithm [reference?] to the distance matrix D. The MDS algorithm places each TCR into the 2D space such that the between-object distances are preserved as well as possible. 
+For translating the TCR chains into a low dimension embedded space (in our case two domension for visualziation), we applied the multidimensional scaling (MDS) algorithm [5] to the distance matrix D, which places each TCR into the 2D space such that the pairwise similarity among TCRs are preserved as Euclidean distance in the embedded space as much as possible. 
 
-### Probability densitiy fitting
+### Probability density fitting
 
-Using the MDS, each TCR chain can be represented as a point in the 2D embedded space. We then used Parzen-Window Density Estimation (PWDE) algorithm to fit probability density functions on TCRs of different patient groups to reveal their locational preference in the 2D embedded space (TCR Map). 
+After MDS, each TCR chain is represented as a point in the 2D embedded space. We then used Parzen-Window Density Estimation (PWDE) algorithm to fit probability density functions on TCRs of different patient groups to reveal their locational preference in the 2D embedded space (TCR Map). 
 
 In our demo we choose the Gaussian Kernel assuming that the data points are i.i.d. random variables with known probability distribution functions. 
 
@@ -58,12 +58,12 @@ docker run -d -p 8050:8050 wangshun1121/tcrmap:0.1
 ```
 After the tool is running, enter `127.0.0.1:8050` in your web browser to access to the TCR Map tool. 
 
-You may now proceed to the visualization section for the instructions of the interactive web interface. Or, check the data prepration section to prepare your own dataset for visualization. 
-### Data prepration 
+You may now proceed to the visualization section for the instructions of the interactive web interface. Or, check the data prepration section if you want to prepare your own dataset for visualization. 
+### Data preparation 
 #### TCR distance calculation 
 To produce the TCR distance data, follow the following steps
 
-* Obtain TCR data.  For this demo, we downloaded the TCR data from https://doi.org/10.21417/ADPT2020COVID, 
+* Obtain TCR data 
 * Identified amplified TCR chains as in https://github.com/wangshun1121/pubtcrs. 
 * Put the selected TCRs with their corresponding samples recorded in `SelectedTCRs.xls.gz`, and the selected samples with their phenotypes (age, gender and disease) in `Phenotypes.txt`.
 * Finally, use the following commands to produce the TCR distance data for subsequent steps. 
@@ -102,3 +102,4 @@ For the Color Legend, a user can select several density distribution functions e
 - [2] Murugan A, Mora T, Walczak A M, et al. Statistical inference of the generation probability of T-cell receptors from sequence repertoires[J]. Proceedings of the National Academy of Sciences, 2012, 109(40): 16161-16166. 
 - [3] Dash P, Fiore-Gartland A J, Hertz T, et al. Quantifiable predictive features define epitope-specific T cell receptor repertoires[J]. Nature, 2017, 547(7661): 89-93. 
 - [4] Emerson R O, DeWitt W S, Vignali M, et al. Immunosequencing identifies signatures of cytomegalovirus exposure history and HLA-mediated effects on the T cell repertoire[J]. Nature genetics, 2017, 49(5): 659-665.
+- [5] Borg, I.; Groenen, P. (2005). Modern Multidimensional Scaling: theory and applications (2nd ed.). New York: Springer-Verlag. pp. 207–212.
