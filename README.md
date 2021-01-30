@@ -1,6 +1,6 @@
 # TCR Map: Location Is All We Need
 
-Yuqing Chang (1), Shun Wang (1), Yacheng Liu (1), Hao Li (1), Wenxian Yang (2), Rongshan Yu (1,2)
+Yuqing Chang (1), Shun Wang (1), Yachen Liu (1), Hao Li (1), Wenxian Yang (2), Rongshan Yu (1,2)
 
 (1) Department of Computer Science, Xiamen University, China 
 
@@ -20,7 +20,7 @@ The TCR Map tool can be utilzed in several different ways to help biological stu
 
 ### Data
 
-TCR-beta sequences datasets of COVID-19 patients were downloaded from ImmuneCODE-COVID available from [precisionFDA's COVID-19 Precision Immunology App-a-thon](https://precision.fda.gov/challenges/12) , which consists of 1486 samples from of 7 cohorts in total. Within these samples, 928 COVID-positive samples were selected in our demo. We also used a CMV TCR-beta sequencing dataset (340 CMV+ and 419 normal/healthy samples) for control [4]. In our demo, there are 1687 samples in total. 
+TCR-beta sequences datasets of COVID-19 patients were downloaded from ImmuneCODE-COVID available from [precisionFDA's COVID-19 Precision Immunology App-a-thon competition](https://precision.fda.gov/challenges/12), which consists of 1486 samples from of 7 cohorts in total. Within these samples, 928 COVID-positive samples were selected in our demo. We also used a CMV TCR-beta sequencing dataset (340 CMV+ and 419 normal/healthy samples) for control [4]. In our demo, there are 1687 samples in total. 
 
 ### Identifying amplified TCR chains
 In our project, TCR chains were defined by a V-gene family plus a CDR3 amino acid sequence. 
