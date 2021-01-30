@@ -12,9 +12,9 @@ Yuqing Chang (1), Shun Wang (1), Yachen Liu (1), Hao Li (1), Wenxian Yang (2), R
 
 T cells are the effectors of cell-mediated adaptive immunity in jawed vertebrates. The responding T cell proliferates clonally, and its progeny inherit the same antigen-specific T cell receptors (TCR), constituting a long-term immunological memory of the antigen. The diverse population of TCR clones in an individual (the TCR repertoire) thus dynamically encodes a history of immunological challenges. People have similar virus-specific TCR after being exposed to the same virus, such as parvovirus, influenza, cytomegalovirus, and Epstein-Barr virus [1].
 
-Currently, high-throughput TCR sequencing allows us to charactrize individuals' TCR repertoires. However, it remains as a non-trivial task to associate these sequenced TCRs to their antigenic targets directly from TCR repertoire data, hence limiting the utilization of these data in immunlogical and clinical research.  In this project, we developed a method to map TCR repertoire data into a low-dimensional embedded space. The resulting embedded respresentation of TCR repertoire data, which we referred to as TCR Map, preserves the similarities of different TCR moleculars such that similar TCRs will be placed closely in the embedded space.   
+Currently, high-throughput TCR sequencing allows us to characterize individuals' TCR repertoires. However, it remains a non-trivial task to associate these sequenced TCRs to their antigenic targets directly from TCR repertoire data, hence limiting the utilization of these data in immunological and clinical research.  In this project, we developed a method to map TCR repertoire data into a low-dimensional embedded space. The resulting embedded representation of TCR repertoire data, which we referred to as TCR Map, preserves the similarities of different TCR molecules such that similar TCRs will be placed closely in the embedded space after the transformation.   
 
-The TCR Map tool can be utilzed in several different ways to help biological study of TCR repertoire data. For example, as TCRs of same or similar antigens tend to cluster together in the TCR Map, one can try to infer the potential epitope targets of an unknown TCR with its surrounding annotated TCR. Furthermore, one can try to fit a probability density function based on aggregation degree of TCRs from different patient groups (e.g., COVID-19 vs non-COVID-19) on the TCR Map, and identify potential disease-specific TCR clusters based on their differentiation.  In this App-a-thon competition, we developed a software pipeline and a (preliminary) interactive tool based on Python/Plotly to facilitate these analysis. 
+The TCR Map tool can be utilized in several different ways to help biological study of TCR repertoire data. For example, as TCRs of the same or similar antigens tend to cluster together in the TCR Map, one can try to infer the potential epitope targets of an unknown TCR with its surrounding annotated TCR. Furthermore, one can try to fit a probability density function based on aggregation degree of TCRs from different patient groups (e.g., COVID-19 vs non-COVID-19) on the TCR Map, and identify potential disease-specific TCR clusters based on their differentiation.  In this App-a-thon competition, we developed a software pipeline and a (preliminary) interactive tool based on Python/Plotly to facilitate these analyses. 
 
 ## 2. Methods
 
@@ -52,13 +52,13 @@ In our demo we choose the Gaussian Kernel assuming that the data points are i.i.
 
 ### Quick start 
 
-To facilitate the evalution of TCR Map, we encapsulated the visualization tool together with all the preprocessed data from ImmuneCODE-COVID and CMV TCR-beta sequencing dataset into a docker file, which can be launched using the following command: 
+To facilitate the evaluation of TCR Map, we encapsulated the visualization tool together with all the preprocessed data from ImmuneCODE-COVID and CMV TCR-beta sequencing dataset into a docker file, which can be launched using the following command: 
 ```
 docker run -d -p 8050:8050 wangshun1121/tcrmap:0.1
 ```
 After the tool is running, enter `127.0.0.1:8050` in your web browser to access to the TCR Map tool. 
 
-You may now proceed to the visualization section for the instructions of the interactive web interface. Or, check the data prepration section if you want to prepare your own dataset for visualization. 
+You may now proceed to the visualization section for the instructions of the interactive web interface. Or, check the data preparation section if you want to prepare your own dataset for visualization. 
 ### Data preparation 
 #### TCR distance calculation 
 To produce the TCR distance data, follow the following steps
@@ -91,9 +91,9 @@ python calc_tcr_coord.py --tcr_dist_path ./SelectedTCR.tcrdist.tab --filter_tcr_
 ### Visualization
 A user can interact with the TCR Map tool via two control modules, i.e., the Sample Selector and the Color Legend. 
 
-The Sample Selector is used to select TCR from an individal sample or from a group of samples for visualization. More specifically, a user can select TCRs from people of different conditions or age groups to be visualized on the TCR Map.  Alternatively, a user can also select TCRs from a list of individual people from a drop-down list. Sample selection based on other clinical attribute (e.g. severity of disease) is currently under development as well.   
+The Sample Selector is used to select TCR from an individual  sample or from a group of samples for visualization. More specifically, a user can select TCRs from people of different conditions or age groups to be visualized on the TCR Map.  Alternatively, a user can also select TCRs from a list of individual people from a drop-down list. Sample selection based on other clinical attribute (e.g. severity of disease) is currently under development as well.   
 
-For the Color Legend, a user can select several density distribution functions estimated from locational distribution of TCRs from different groups (COVID-19, CMV, and healty) as color legend to annotate the TCRs display on the TCR Map, which reveals the density of TCRs from different groups in the surroundings of the displayed TCRs. Furthermore, a user can also select the difference between two different probability distribution densities to discover potential enrichment of TCRs related to certain disease in certain locations on the TCR Map. 
+For the Color Legend, a user can select several density distribution functions estimated from locational distribution of TCRs from different groups (COVID-19, CMV, and healthy) as color legend to annotate the TCRs display on the TCR Map, which reveals the density of TCRs from different groups in the surroundings of the displayed TCRs. Furthermore, a user can also select the difference between two different probability distribution densities to discover potential enrichment of TCRs related to certain disease in certain locations on the TCR Map. 
 
 
 ## References
