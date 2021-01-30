@@ -6,7 +6,7 @@ Yuqing Chang (1), Shun Wang (1), Yacheng Liu (1), Hao Li (1), Wenxian Yang (2), 
 
 (2) Aginome Scientific, China
 
-![Interface](https://github.com/xmuyulab/COVID-19_FDA_App-a-thon/blob/main/sample.png)
+![Interface](sample.png)
 
 ## 1. Introduction
 
@@ -50,16 +50,15 @@ In our demo we choose the Gaussian Kernel assuming that the data points are i.i.
 
 ## 3. Usage
 
-### How to install the tool? 
+### Quick start 
 
-Using docker, lauch this tool just by one line:
-
+To facilitate the evalution of TCR Map, we encapsulated the visualization tool together with all the preprocessed data from ImmuneCODE-COVID and CMV TCR-beta sequencing dataset into a docker file, which can be launched using the following command: 
 ```
 docker run -d -p 8050:8050 wangshun1121/tcrmap:0.1
 ```
+After the tool is running, enter `127.0.0.1:8050` in your web browser to access to the TCR Map tool. 
 
-then enter `127.0.0.1:8050` in your web brownser, the tool starts!
-
+You may now proceed to the visualization section for the instructions of the interactive web interface. Or, check the data prepration section to prepare your own dataset for visualization. 
 ### Data prepration 
 #### TCR distance calculation 
 To produce the TCR distance data, follow the following steps
